@@ -1,0 +1,22 @@
+need to create a web application.
+frontend : react
+backend:pyton -fast api
+database: postgres 
+connection string:
+jdbc:postgresql://pg-19c5e6a6-tanvir-d9f6.h.aivencloud.com:26621/defaultdb?ssl=require&user=avnadmin&password=AVNS_wnAQteeCuteBBUS5sci
+use defaultdb
+
+
+objective:
+We have a Cooperative Society name UND(Unity and development).Goal of UND is to purchase a land and develop flat for each user.there are  member in UND. Each user deposit a fix amount of money monthly and a large amount yearly. this application will track of the deposited money. 
+primary task of this app
+1) Admin can create User account and memebers can log in.
+2) Memebers can only view his won diposited money information
+3) admin can view all user transaction information
+4) Account, admin user can change monthly amount and yearly amount.
+5)There should be Yearly target  for each member.Current year target should be show in members account and in report.equetion: Yearly Target=Total monthly deposit+ Yearly deposit.
+6) Create Deposite report for members and admin.
+7) Admin and account role user can register for expense
+8)Admin can view deposite expense summary and details report
+9)create a dashboard for memebers and admin about targent, total paid, paid this month, Due information.   
+10) members deposit information shoud be created by admin or account role user
