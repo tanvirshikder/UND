@@ -8,7 +8,9 @@ use defaultdb
 
 
 objective:
-We have a Cooperative Society name UND(Unity and development).Goal of UND is to purchase a land and develop flat for each user.there are  member in UND. Each user deposit a fix amount of money monthly and a large amount yearly. this application will track of the deposited money. 
+We have a Cooperative Society name UND(Unity and development).Goal of UND is to purchase a land and develop 
+flat for each user.there are  member in UND. Each user deposit a fix amount of money monthly and a large amount yearly.
+ this application will track of the deposited money. 
 primary task of this app
 1) Admin can create User account and memebers can log in.
 2) Memebers can only view his won diposited money information
