@@ -19,29 +19,29 @@ export default function MemberDeposits() {
 
   return (
     <div>
-      <h2 style={{ marginTop: 0, color: '#1a3c5e' }}>My Deposits</h2>
+      <h2 style={{ marginTop: 0, color: '#1a3c5e', marginBottom: 16 }}>My Deposits</h2>
 
-      <div style={{ background: '#fff', padding: 16, borderRadius: 8, marginBottom: 16, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-        <input type="number" placeholder="Year" style={{ ...inputStyle, width: 100 }} value={filters.year} onChange={e => setFilters({ ...filters, year: e.target.value })} />
-        <select style={{ ...inputStyle, width: 140 }} value={filters.deposit_type} onChange={e => setFilters({ ...filters, deposit_type: e.target.value })}>
+      <div className="filter-bar">
+        <input type="number" placeholder="Year" style={inputStyle} value={filters.year} onChange={e => setFilters({ ...filters, year: e.target.value })} />
+        <select style={inputStyle} value={filters.deposit_type} onChange={e => setFilters({ ...filters, deposit_type: e.target.value })}>
           <option value="">All Types</option>
           <option value="monthly">Monthly</option>
           <option value="yearly">Yearly</option>
         </select>
-        <span style={{ marginLeft: 'auto', fontWeight: 700, color: '#27ae60', fontSize: 15 }}>Total: ৳ {total.toLocaleString()}</span>
+        <span className="total-label" style={{ marginLeft: 'auto', fontWeight: 700, color: '#27ae60', fontSize: 15, whiteSpace: 'nowrap' }}>Total: ৳ {total.toLocaleString()}</span>
       </div>
 
-      <div style={{ background: '#fff', borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
+      <div className="table-wrap">
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead style={{ background: '#1a3c5e', color: '#fff' }}>
-            <tr>{['Type', 'Amount', 'Date', 'Year', 'Month', 'Note'].map(h => <th key={h} style={{ padding: '12px 16px', textAlign: 'left', fontSize: 13 }}>{h}</th>)}</tr>
+            <tr>{['Type', 'Amount', 'Date', 'Year', 'Month', 'Note'].map(h => <th key={h} style={{ padding: '12px 16px', textAlign: 'left', fontSize: 13, whiteSpace: 'nowrap' }}>{h}</th>)}</tr>
           </thead>
           <tbody>
             {deposits.map((d, i) => (
               <tr key={d.id} style={{ background: i % 2 === 0 ? '#fff' : '#f9f9f9' }}>
                 <td style={{ padding: '10px 16px', fontSize: 13 }}><span style={{ background: d.deposit_type === 'monthly' ? '#2980b9' : '#8e44ad', color: '#fff', padding: '2px 8px', borderRadius: 10, fontSize: 11 }}>{d.deposit_type}</span></td>
-                <td style={{ padding: '10px 16px', fontSize: 13, fontWeight: 600, color: '#27ae60' }}>৳ {d.amount.toLocaleString()}</td>
-                <td style={{ padding: '10px 16px', fontSize: 13 }}>{d.deposit_date}</td>
+                <td style={{ padding: '10px 16px', fontSize: 13, fontWeight: 600, color: '#27ae60', whiteSpace: 'nowrap' }}>৳ {d.amount.toLocaleString()}</td>
+                <td style={{ padding: '10px 16px', fontSize: 13, whiteSpace: 'nowrap' }}>{d.deposit_date}</td>
                 <td style={{ padding: '10px 16px', fontSize: 13 }}>{d.year}</td>
                 <td style={{ padding: '10px 16px', fontSize: 13 }}>{d.month ? months[d.month - 1] : '-'}</td>
                 <td style={{ padding: '10px 16px', fontSize: 13 }}>{d.note || '-'}</td>

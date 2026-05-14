@@ -13,14 +13,14 @@ export default function AdminDashboard() {
 
   return (
     <div>
-      <h2 style={{ marginTop: 0, color: '#1a3c5e' }}>Admin Dashboard</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 16 }}>
+      <h2 style={{ marginTop: 0, color: '#1a3c5e', marginBottom: 20 }}>Admin Dashboard</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 16 }}>
         <StatCard label="Total Members" value={data.total_members} color="#1a3c5e" />
         <StatCard label="Total Deposits" value={fmt(data.total_deposits)} color="#27ae60" />
         <StatCard label="Total Expenses" value={fmt(data.total_expenses)} color="#e74c3c" />
         <StatCard label="Net Balance" value={fmt(data.net_balance)} color="#8e44ad" />
-        <StatCard label="This Month Collection" value={fmt(data.this_month_collection)} color="#2980b9" />
-        <StatCard label="This Year Collection" value={fmt(data.this_year_collection)} color="#f39c12" />
+        <StatCard label="This Month" value={fmt(data.this_month_collection)} color="#2980b9" />
+        <StatCard label="This Year" value={fmt(data.this_year_collection)} color="#f39c12" />
       </div>
     </div>
   );

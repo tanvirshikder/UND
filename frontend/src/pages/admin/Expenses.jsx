@@ -29,22 +29,21 @@ export default function Expenses() {
 
   const handleDelete = async id => {
     if (!confirm('Delete this expense?')) return;
-    await api.delete(`/api/expenses/${id}`);
-    load();
+    await api.delete(`/api/expenses/${id}`); load();
   };
 
   const total = expenses.reduce((s, e) => s + e.amount, 0);
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
         <h2 style={{ margin: 0, color: '#1a3c5e' }}>Expenses</h2>
         <button style={btnStyle()} onClick={() => setShowForm(!showForm)}>+ Add Expense</button>
       </div>
 
       {showForm && (
         <form onSubmit={handleSubmit} style={{ background: '#fff', padding: 20, borderRadius: 8, marginBottom: 20, boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 12 }}>
+          <div className="grid-3 form-grid" style={{ marginBottom: 12 }}>
             <div><label style={{ fontSize: 12, color: '#555' }}>Title *</label><input style={inputStyle} value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} required /></div>
             <div><label style={{ fontSize: 12, color: '#555' }}>Amount *</label><input type="number" style={inputStyle} value={form.amount} onChange={e => setForm({ ...form, amount: e.target.value })} required /></div>
             <div><label style={{ fontSize: 12, color: '#555' }}>Date *</label><input type="date" style={inputStyle} value={form.expense_date} onChange={e => setForm({ ...form, expense_date: e.target.value })} required /></div>
@@ -59,23 +58,23 @@ export default function Expenses() {
         </form>
       )}
 
-      <div style={{ background: '#fff', padding: 16, borderRadius: 8, marginBottom: 16, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', display: 'flex', gap: 12, alignItems: 'center' }}>
-        <input type="number" placeholder="Year" style={{ ...inputStyle, width: 100 }} value={filters.year} onChange={e => setFilters({ ...filters, year: e.target.value })} />
-        <input type="number" placeholder="Month" style={{ ...inputStyle, width: 100 }} value={filters.month} onChange={e => setFilters({ ...filters, month: e.target.value })} />
-        <span style={{ marginLeft: 'auto', fontWeight: 700, color: '#e74c3c' }}>Total: ৳ {total.toLocaleString()}</span>
+      <div className="filter-bar">
+        <input type="number" placeholder="Year" style={inputStyle} value={filters.year} onChange={e => setFilters({ ...filters, year: e.target.value })} />
+        <input type="number" placeholder="Month (1-12)" style={inputStyle} value={filters.month} onChange={e => setFilters({ ...filters, month: e.target.value })} />
+        <span className="total-label" style={{ marginLeft: 'auto', fontWeight: 700, color: '#e74c3c', whiteSpace: 'nowrap' }}>Total: ৳ {total.toLocaleString()}</span>
       </div>
 
-      <div style={{ background: '#fff', borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
+      <div className="table-wrap">
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead style={{ background: '#1a3c5e', color: '#fff' }}>
-            <tr>{['Title', 'Amount', 'Date', 'Category', 'Note', 'Action'].map(h => <th key={h} style={{ padding: '12px 16px', textAlign: 'left', fontSize: 13 }}>{h}</th>)}</tr>
+            <tr>{['Title', 'Amount', 'Date', 'Category', 'Note', 'Action'].map(h => <th key={h} style={{ padding: '12px 16px', textAlign: 'left', fontSize: 13, whiteSpace: 'nowrap' }}>{h}</th>)}</tr>
           </thead>
           <tbody>
             {expenses.map((e, i) => (
               <tr key={e.id} style={{ background: i % 2 === 0 ? '#fff' : '#f9f9f9' }}>
                 <td style={{ padding: '10px 16px', fontSize: 13 }}>{e.title}</td>
-                <td style={{ padding: '10px 16px', fontSize: 13, fontWeight: 600, color: '#e74c3c' }}>৳ {e.amount.toLocaleString()}</td>
-                <td style={{ padding: '10px 16px', fontSize: 13 }}>{e.expense_date}</td>
+                <td style={{ padding: '10px 16px', fontSize: 13, fontWeight: 600, color: '#e74c3c', whiteSpace: 'nowrap' }}>৳ {e.amount.toLocaleString()}</td>
+                <td style={{ padding: '10px 16px', fontSize: 13, whiteSpace: 'nowrap' }}>{e.expense_date}</td>
                 <td style={{ padding: '10px 16px', fontSize: 13 }}>{e.category || '-'}</td>
                 <td style={{ padding: '10px 16px', fontSize: 13 }}>{e.note || '-'}</td>
                 <td style={{ padding: '10px 16px' }}><button onClick={() => handleDelete(e.id)} style={btnStyle('#e74c3c')}>Delete</button></td>

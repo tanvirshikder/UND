@@ -1,2 +1,93 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; }
+
+/* ── Responsive grid helpers ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.col-span-2 { grid-column: 1 / -1; }
+
+/* ── Responsive table wrapper ── */
+.table-wrap { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ── Modal responsive ── */
+.modal-box { background: #fff; border-radius: 10px; padding: 28px; width: 480px; max-width: calc(100vw - 32px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto; }
+.modal-box-sm { width: 380px; }
+
+/* ── Filter bar ── */
+.filter-bar { background: #fff; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* ── Sidebar overlay (mobile) ── */
+.sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 99; }
+
+/* ── Hamburger ── */
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; color: #fff; font-size: 22px; line-height: 1; }
+
+/* ── Stat cards summary row ── */
+.summary-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.summary-card { background: #fff; padding: 16px 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); flex: 1; min-width: 140px; }
+
+@media (max-width: 768px) {
+  /* Layout */
+  .hamburger { display: block; }
+
+  .sidebar-overlay.open { display: block; }
+
+  aside.app-sidebar {
+    position: fixed !important;
+    left: -240px;
+    top: 0;
+    height: 100vh;
+    z-index: 100;
+    transition: left 0.25s ease;
+    width: 240px !important;
+  }
+  aside.app-sidebar.open { left: 0; }
+
+  .app-topbar {
+    display: flex !important;
+  }
+
+  main.app-main {
+    padding: 16px !important;
+    padding-top: 60px !important;
+  }
+
+  /* Grids collapse to 1 col */
+  .grid-2, .grid-3 { grid-template-columns: 1fr !important; }
+  .col-span-2 { grid-column: 1 / -1; }
+
+  /* Login card full width */
+  .login-card { width: 100% !important; padding: 28px 20px !important; }
+
+  /* Filter bar stacks */
+  .filter-bar { flex-direction: column; align-items: stretch; }
+  .filter-bar input, .filter-bar select { width: 100% !important; }
+  .filter-bar .total-label { text-align: right; }
+
+  /* Summary cards 2-col on mobile */
+  .summary-card { min-width: calc(50% - 8px); }
+
+  /* Tables: horizontal scroll */
+  .table-wrap { border-radius: 8px; }
+  .table-wrap table { min-width: 500px; }
+
+  /* Modals full width */
+  .modal-box, .modal-box-sm { width: calc(100vw - 32px) !important; padding: 20px 16px !important; }
+
+  /* Form grids */
+  .form-grid { grid-template-columns: 1fr !important; }
+
+  /* Page header row */
+  .page-header { flex-wrap: wrap; gap: 10px; }
+  .page-header h2 { font-size: 18px; }
+
+  /* Tab buttons smaller */
+  .tab-btn { padding: 8px 12px !important; font-size: 13px !important; }
+
+  /* Stat card value smaller */
+  .stat-value { font-size: 20px !important; }
+}
+
+@media (max-width: 400px) {
+  .summary-card { min-width: 100%; }
+}

@@ -22,8 +22,8 @@ export default function Login() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #1a3c5e 0%, #2d5a8e 100%)' }}>
-      <div style={{ background: '#fff', borderRadius: 12, padding: 40, width: 360, boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #1a3c5e 0%, #2d5a8e 100%)', padding: '16px' }}>
+      <div className="login-card" style={{ background: '#fff', borderRadius: 12, padding: 40, width: 360, boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <h1 style={{ margin: 0, fontSize: 28, color: '#1a3c5e' }}>🏗️ UND</h1>
           <p style={{ margin: '6px 0 0', color: '#666', fontSize: 14 }}>Unity & Development Cooperative</p>
